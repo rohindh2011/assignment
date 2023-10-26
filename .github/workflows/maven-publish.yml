@@ -19,20 +19,26 @@ jobs:
       env:
         VALIDATE_ALL_CODEBASE: false
         DEFAULT_BRANCH: main
-        GITHUB_TOKEN: ${{ secrets.ROHINDHKISHORE_TOKEN }}  
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
-      with:
-        languages: java   
+        GITHUB_TOKEN: ${{ secrets.ROHINDHKISHORE_TOKEN }}
 
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+    # - name: Get registration token
+    #   id: getRegToken
+    #   run: |
+    #     curl -X POST -H \"Accept: application/vnd.github.v3+json\"  -H 'Authorization: token ${{ secrets.ROHINDHKISHORE_TOKEN }}' https://api.github.com/repos/myprofile/myrepo/actions/runners/registration-token
+    
+    # - name: Initialize CodeQL
+    #   uses: github/codeql-action/init@v2
+    #   with:
+    #     languages: java   
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
-      with:
-        upload: False
-        output: sarif-results
+    # - name: Autobuild
+    #   uses: github/codeql-action/autobuild@v2
+
+    # - name: Perform CodeQL Analysis
+    #   uses: github/codeql-action/analyze@v2
+    #   with:
+    #     upload: False
+    #     output: sarif-results
 
     - name: setup java
       uses: actions/setup-java@v3
