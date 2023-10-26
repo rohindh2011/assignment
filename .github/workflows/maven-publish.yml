@@ -46,14 +46,14 @@ jobs:
         distribution: 'temurin'
         java-version: '11'
         
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+        
     - name: build code
       run: mvn clean package
 
     - name: run unit test
       run: mvn test 
-
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
 
     - name: Build Docker Image
       run: docker build -t rohindhkishore/rohindhjavaapp .
